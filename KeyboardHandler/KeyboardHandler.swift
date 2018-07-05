@@ -54,7 +54,7 @@ class KeyboardHandler {
         
         if let kf = keyboardFrame, let inputView = activeTextInputView {
             //get view position based on window not on immediate parent
-            // to: nil - means calcute position based on window
+            // to: nil - means calculate position based on window
             var inputViewOrigin = inputView.convert(CGPoint(x: 0, y: 0) , to: nil)
             
             //If active TextInputView is UITextView find the exact origin
@@ -69,7 +69,7 @@ class KeyboardHandler {
                 guard let rootView = getTopViewController()?.view else {
                     return
                 }
-                //Calculte keyboard starting posiotion using 'kf.minY'
+                //Calculate keyboard starting posiotion using 'kf.minY'
                 //Calculate UITextField / UITextView starting posiotion using 'inputViewOrigin.y'
                 //Calculate UITextField / UITextView height using 'inputView.frame.height'
                 //Get View Already moved position using 'self.view.frame.minY'
