@@ -20,31 +20,31 @@ class KeyboardHandler {
     private init() { }
     
     func enableKeyboardHandling() {
-        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardShow(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardShow(notification:)), name: Notification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardShow(notification:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardHide(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onTextInputFieldBeginEdit(notification:)), name: Notification.Name.UITextFieldTextDidBeginEditing, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onTextInputFieldBeginEdit(notification:)), name: UITextField.textDidBeginEditingNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onTextInputFieldEndEdit(notification:)), name: Notification.Name.UITextFieldTextDidEndEditing, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onTextInputFieldEndEdit(notification:)), name: UITextField.textDidEndEditingNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onTextInputFieldBeginEdit(notification:)), name: Notification.Name.UITextViewTextDidBeginEditing, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onTextInputFieldBeginEdit(notification:)), name: UITextView.textDidBeginEditingNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onTextViewDidChange(notification:)), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onTextViewDidChange(notification:)), name: UITextView.textDidChangeNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onTextInputFieldEndEdit(notification:)), name: Notification.Name.UITextViewTextDidEndEditing, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onTextInputFieldEndEdit(notification:)), name: UITextView.textDidEndEditingNotification, object: nil)
     }
     
     func disableKeyboardHandling() {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextFieldTextDidBeginEditing, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextFieldTextDidEndEditing, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidBeginEditing, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidChange, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidEndEditing, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidBeginEditingNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidEndEditingNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidBeginEditingNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidChangeNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidEndEditingNotification, object: nil)
     }
     
     @objc private func onKeyboardShow(notification: Notification) {        
